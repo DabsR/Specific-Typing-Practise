@@ -214,7 +214,10 @@ def wpm(time, line):
     words = line.split()
     word_length = len(words)
     words_per_m = word_length / time
-    
+    #Discord people pointed out that this calculation is wrong.
+    #Will change later, and may even add different website wpm
+    #modes if for example, 10ff uses a different wpm formula from
+    #typeracer.
     return words_per_m
 
 def wordcheck(inp):
