@@ -172,7 +172,7 @@ level_9 =[ "abilities","according",
 
 personal_favourites =[ "something", "everything", "throughout",
                        "without", "therefore", "although",
-                       "alliteration", "intimate", "iniative",
+                       "alliteration", "intimate", "initiative",
                        "inanimate", "yourself", "right",
                        "righteous", "rollover", "mitigation",
                        "attentuation", "anonimity", "ambiguity",
