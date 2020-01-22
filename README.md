@@ -10,7 +10,7 @@ Made for the Dvorak discord group.<br>
 
 Clone the repository & run the `main.py` file: 
 ```
-$ git clone git@github.com:user/repo.git
+$ git clone git@github.com:DaveDabko/Specific-Typing-Practise.git
 $ py main.py
 ```
 
