@@ -14,7 +14,7 @@ depth = 4
 #even want to do that since it does require some fiddling at times using this
 #program.
 
-#I personally find depth = 0 and width = anything, to be best.
+#I personally find depth = 1 and width > 1, to be best.
 
 for i in range(0,depth):
     initialPrompt = initialPrompt+"\n"+width*(str(selectedLevel[selectedIndex])+" ")
