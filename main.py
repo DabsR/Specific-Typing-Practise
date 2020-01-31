@@ -1,34 +1,83 @@
 from time import time
 import levels
-i, initialPrompt = 0, ""
+initialPrompt = ""
 
-#I was too lazy to create a simple user interface, so just change
-#the four variables below to navigate through the word levels:
-
+#User Interface
 selectedIndex = 0
-selectedLevel = levels.level_9
-width = 3
-depth = 4
+selectedLevel = levels
+width = 0
+depth = 0
+def defaultValues():
+    selectedIndex = 5
+    selectedLevel = levels.level_12
+    width = 20
+    depth = 1
 
-#You are of course allowed to modify the code however you want, and you may
-#even want to do that since it does require some fiddling at times using this
-#program.
+def userInterface():
+    Pass = False
+    while Pass == False:
+        try:
+            selectedLevel = int(input("Enter number from 9 to 20:\n(Each corresponds to the character amount)"))
+            Pass = False
+        except:
+            print("Invalid input type")
+            Pass = True
+        if not inp in range(9,21):
+            if Pass == False:
+                print("Number out of range")
+            else:
+                Pass = False
+        else:
+            Pass = True
+    selectedLevel = levels[selectedLevel]
 
-#I personally find depth = 1 and width > 1, to be best.
-
-for i in range(0,depth):
-    initialPrompt = initialPrompt+"\n"+width*(str(selectedLevel[selectedIndex])+" ")
-prompt = initialPrompt
+    #For loop to print each list item in order
+    for i in selectedLevel:
+        print(str(i+". ") + selectedLevel[i]))
+        
+    Pass = False
+    while Pass == False:
+        try:
+            selectedIndex = input("Enter the number of the word you want to type:")
+            print("The available range is: 0 to",len(selectedLevel))
+            Pass = False
+        except:
+            print("Invalid input type")
+            Pass = True
+        if not inp in range(9,21):
+            if Pass == False:
+                print("Number out of range")
+            else:
+                Pass = False
+        else:
+            Pass = True
+    
+    #Text display
+    Pass = False
+    while Pass == False:
+        try:
+            width = input("Enter how many words you want displayed length-wise:")
+            print("The available range is: 0 to",len(selectedLevel))
+            Pass = False
+        except:
+            print("Invalid input type")
+            Pass = True
+        if not inp in range(0, len(selectedLevel)+1):
+            if Pass == False:
+                print("Number out of range")
+            else:
+                Pass = False
+        else:
+            Pass = True
+    print("In total, you will be typing " + str(width * depth) + "words.")
 
 def counter():
-    # i = 0 
     print(prompt)
     input(">>> Press ENTER to begin")
     begin_time = time()
     inp = input("\n")
     end_time = time()
     final_time = (end_time - begin_time) / 60
-
     return final_time, inp
 
 def wpm(time, line):
@@ -47,7 +96,6 @@ def wordcheck(inp):
     inputs = inp.split()
     errorcount = 0
     idx = 0
-    
     for inp in inputs:
         if inp != prompts[idx]:
             errorcount += 1
@@ -56,20 +104,43 @@ def wordcheck(inp):
             elif inp != prompts[idx - 1]:
                 idx += 1
         else:
-            idx += 1
-            
+            idx += 1      
     words_left = len(prompts) - len(inputs)
     correct = float(len(prompts)) - float(errorcount)
     percentage = (((float(correct) / float(len(prompts))) - float(words_left) / float(len(prompts))) * 100)
-
     return percentage
 
-tm, line = counter()
-tm = round(tm, 2)
-words_per_minute = wpm(tm, line)
-words_per_minute = round(words_per_minute, 2)
-print("You total time was:", tm ,"minutes")
-print("with an average of:", words_per_minute ,"words per minute")
-percentage = wordcheck(line)
-percentager = round(percentage, 2)
+percentager = 0
+exit = False
+choice = 0
+while exit == False:
+     
+    choice = input("Choose either:\n1. Setup & guide.\n2. Skip setup. (Use default settings)\n3. Exit."))
+    while not isinstance(choice, int):
+            print("<!> Has to be a number <!>")
+            choice = int(input("Choose either:\n1. Setup guide.\n2. Skip setup. (Use default settings)\n3. Exit."))
+    while not choice in range(1,4):
+        print("<!> Has to be a number between 1 and 3 <!>")
+        choice = int(input("Choose either:\n1. Setup guide.\n2. Skip setup. (Use default settings)\n3. Exit."))
+        
+    if choice == 1:
+        userInterface()
+    elif choice == 2:
+        defaultValues()
+    elif choice == 3:
+        exit
+    i = 0
+    
+    for i in range(0,depth):
+        initialPrompt = initialPrompt+"\n"+width*(str(selectedLevel[selectedIndex])+" ")
+    prompt = initialPrompt
+
+    tm, line = counter()
+    tm = round(tm, 2)
+    words_per_minute = wpm(tm, line)
+    #words_per_minute = round(words_per_minute, 2)
+    print("You total time was:", tm ,"minutes")
+    print("with an average of:", words_per_minute ,"words per minute")
+    percentage = wordcheck(line)
+    percentager = round(percentage, 2)
 print("with an accuracy of:", percentager ,"accuracy")
