@@ -7,6 +7,8 @@ selectedIndex = 0
 selectedLevel = levels
 width = 0
 depth = 0
+
+#Unused Subroutine V
 def defaultValues():
     selectedIndex = 5
     selectedLevel = levels.level_12
@@ -14,10 +16,13 @@ def defaultValues():
     depth = 1
 
 def userInterface():
+    
+   #These three similar loops are just error preventions. Will merge them/make them smaller later.
+#You can tell i'm not too good at this.
     Pass = False
     while Pass == False:
         try:
-            selectedLevel = int(input("Enter number from 9 to 20:\n(Each corresponds to the character amount)"))
+            selectedLevel = eval("levels.level_" + input("Choose a level between 9 and 20: "))
             Pass = False
         except:
             print("Invalid input type")
@@ -35,6 +40,8 @@ def userInterface():
     for i in selectedLevel:
         print(str(i+". ") + selectedLevel[i]))
         
+#depth = int(input("Depth (0): ")) # remove depth altogether?
+
     Pass = False
     while Pass == False:
         try:
@@ -56,7 +63,7 @@ def userInterface():
     Pass = False
     while Pass == False:
         try:
-            width = input("Enter how many words you want displayed length-wise:")
+            width = int(input("Width (3): "))
             print("The available range is: 0 to",len(selectedLevel))
             Pass = False
         except:
@@ -69,7 +76,7 @@ def userInterface():
                 Pass = False
         else:
             Pass = True
-    print("In total, you will be typing " + str(width * depth) + "words.")
+    #print("In total, you will be typing " + str(width * depth) + "words.")
 
 def counter():
     print(prompt)
