@@ -19,6 +19,7 @@ def userInterface():
     
    #These three similar loops are just error preventions. Will merge them/make them smaller later.
 #You can tell i'm not too good at this.
+#Got some code to make them better.
     Pass = False
     while Pass == False:
         try:
