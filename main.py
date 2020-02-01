@@ -9,7 +9,6 @@ selectedLevel = levels
 width = 0
 depth = 0
 
-#Unused Subroutine V
 def defaultValues():
     selectedIndex = 5
     selectedLevel = levels.level_12
