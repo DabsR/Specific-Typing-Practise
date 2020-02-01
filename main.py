@@ -1,3 +1,4 @@
+#Code not tested/simplified (yet) after multiple changes made.
 from time import time
 import levels
 initialPrompt = ""
