@@ -34,7 +34,7 @@ def setupGuide():
     inp_ = 0    
     #Word selection
     #Fixed by casting to int
-    selectedIndex = int(checkinp("Word Selection: Enter a number from 0 to" + str(len(selectedLevel)), lambda x: x.isdigit() and int(x) > 0 and int(x) < len(selectedLevel)))
+    selectedIndex = int(checkinp("Word Selection: Enter a number from 0 to {0}".format(len(selectedLevel)), lambda x: x.isdigit() and int(x) > 0 and int(x) < len(selectedLevel)))
     #NEED TO TEST BOUNDARIES CAUSE I CAN'T THINK.
     #Amount of words to type
     inp_ = checkinp("Word amount selection: Enter any number that suits you.", lambda x: x.isdigit() and int(x) > 0)
