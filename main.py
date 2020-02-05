@@ -1,4 +1,7 @@
 #Code not tested/simplified (yet) after multiple changes made.
+
+#FULLY AWARE OF ALL THE ISSUES WITH THE CODE. SHOULD SOON BE DONE THANKS TO DabsR AND LeSirH.
+
 from time import time
 import levels
 initialPrompt = ""
