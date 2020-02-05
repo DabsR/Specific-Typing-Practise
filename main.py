@@ -89,28 +89,27 @@ choice = 0
 percentager = 0
 
 initialPrompt = ""
-exit = False
-while exit == False:
-    choice = checkinp("Menu selection:\nPress 1 - Setup & guide.\nPress 2 - Skip setup. (Use default settings)\nPress 3 - Exit.", lambda x: x.isdigit() and int(x) > 0 and int(x) < 4)
-    if choice == 1:
-        userInterface()
-    elif choice == 2:
-        defaultValues()
-    #elif choice == 3:
-        #<Random word mode?>
-    elif choice == 3:
-        exit
-    #User will have the option to quickly restart the track they just practised. Will implement later.
-    for i in range(0,depth):
-        initialPrompt = initialPrompt+"\n"+width*(str(selectedLevel[selectedIndex])+" ")
-    prompt = initialPrompt
 
-    tm, line = counter()
-    tm = round(tm, 2)
-    words_per_minute = wpm(tm, line)
-    #words_per_minute = round(words_per_minute, 2)
-    print("You total time was:", tm ,"minutes")
-    print("with an average of:", words_per_minute ,"words per minute")
-    percentage = wordcheck(line)
-    percentager = round(percentage, 2)
-    print("with an accuracy of:", percentager ,"accuracy")
+choice = checkinp("Menu selection:\nPress 1 - Setup & guide.\nPress 2 - Skip setup. (Use default settings)\nPress 3 - Exit.", lambda x: x.isdigit() and int(x) > 0 and int(x) < 4)
+if choice == 1:
+    userInterface()
+elif choice == 2:
+    defaultValues()
+#elif choice == 3:
+    #<Random word mode?>
+elif choice == 3:
+    exit
+#User will have the option to quickly restart the track they just practised. Will implement it later.
+for i in range(0,depth):
+    initialPrompt = initialPrompt+"\n"+width*(str(selectedLevel[selectedIndex])+" ")
+prompt = initialPrompt
+
+tm, line = counter()
+tm = round(tm, 2)
+words_per_minute = wpm(tm, line)
+#words_per_minute = round(words_per_minute, 2)
+print("You total time was:", tm ,"minutes")
+print("with an average of:", words_per_minute ,"words per minute")
+percentage = wordcheck(line)
+percentager = round(percentage, 2)
+print("with an accuracy of:", percentager ,"accuracy")
