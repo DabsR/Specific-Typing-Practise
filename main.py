@@ -22,7 +22,7 @@ def defaultValues():
     selectedLevel = levels.level_12
     width = 20
 
-def userInterface():
+def SetupGuide(): #Initially function name was "UserInterface".
 
     #Level Selection
     inp_ = checkinp("Level Selection: Enter a number from 9 to 20:", lambda x: x.isdigit() and int(x) > 8 and int(x) < 21)
@@ -51,7 +51,8 @@ def userInterface():
     #Not very easy to keep track of word count with depth.
     
     #print("In total, you will be typing " + str(width * depth) + "words.") <<<That is pretty bad.
-
+    
+    return #MAY NEED TO RETURN SOME VALUES. WILL BE BACK TO THIS.
 def counter():
     print(prompt)
     input(">>> Press ENTER to begin.")
@@ -103,7 +104,7 @@ while exit == False:
     if choice == 1:
         userInterface()
     elif choice == 2:
-        defaultValues()
+        setupGuide()
     #elif choice == 3:
         #<Random word mode?>
     elif choice == 3:
