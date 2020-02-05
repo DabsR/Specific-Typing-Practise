@@ -3,10 +3,12 @@
 from time import time
 import levels
 
+#Initialisation
 selectedIndex = 0
 selectedLevel = levels
 width = 0
 depth = 0
+
 def checkinp(disp, errlambda) :
     inp = ""
     while True :
@@ -21,8 +23,9 @@ def defaultValues():
     selectedIndex = 5
     selectedLevel = levels.level_12
     width = 20
+    return selectedIndex, selectedLevel, width
 
-def userInterface():
+def setupGuide():
     #Level Selection
     inp_ = checkinp("Level Selection: Enter a number from 9 to 20:", lambda x: x.isdigit() and int(x) > 8 and int(x) < 21)
     selectedLevel = levels[eval("levels.level_" + inp_)]
@@ -43,7 +46,7 @@ def userInterface():
     #Not very easy to keep track of word count with depth included.
     
     #print("In total, you will be typing " + str(width * depth) + "words.") <<<That is pretty bad lol
-
+    return selectedLevel, selectedIndex, width
 def counter():
     print(prompt)
     input(">>> Press ENTER to begin.")
@@ -60,7 +63,7 @@ def wpm(time, line):
     # word_length = len(words)
     # words_per_m = word_length / time
     return 
-    #This wpm calculations should be
+    #These wpm calculations should be
     #better now thanks to LeSirH.
 
 def wordcheck(inp):
@@ -92,17 +95,20 @@ initialPrompt = ""
 
 choice = checkinp("Menu selection:\nPress 1 - Setup & guide.\nPress 2 - Skip setup. (Use default settings)\nPress 3 - Exit.", lambda x: x.isdigit() and int(x) > 0 and int(x) < 4)
 if choice == 1:
-    userInterface()
+    setupGuide()
 elif choice == 2:
     defaultValues()
+    #ERROR?
 #elif choice == 3:
     #<Random word mode?>
 elif choice == 3:
+    
     exit
-#User will have the option to quickly restart the track they just practised. Will implement it later.
-for i in range(0,depth):
-    initialPrompt = initialPrompt+"\n"+width*(str(selectedLevel[selectedIndex])+" ")
+#User will have the option to quickly restart the track they just practised. Will implement later.
+
+initialPrompt = selectedLevel[selectedIndex] #ERROR HERE?
 prompt = initialPrompt
+#I am aware that initialPrompt variable is unnecessary. 
 
 tm, line = counter()
 tm = round(tm, 2)
