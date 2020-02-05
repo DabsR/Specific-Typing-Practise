@@ -1,10 +1,8 @@
-#CODE NOT TESTED FULLY YET. BUT IT DOESN'T SEEM TO HAVE MANY VISIBLE ERRORS.
+#Code partially tested. Two or three logic errors remain.
 
 from time import time
 import levels
-initialPrompt = ""
 
-#User Interface
 selectedIndex = 0
 selectedLevel = levels
 width = 0
@@ -23,19 +21,19 @@ def defaultValues():
     selectedIndex = 5
     selectedLevel = levels.level_12
     width = 20
-    depth = 1
 
 def userInterface():
 
     #Level Selection
-    inp_ = checkinp("Level Selection: Enter a number from 9 to 20:", lambda x: x.isdigit() and int(x) < 21 and int(x) > 8)
+    inp_ = checkinp("Level Selection: Enter a number from 9 to 20:", lambda x: x.isdigit() and int(x) > 8 and int(x) < 21)
     selectedLevel = levels[eval("levels.level_" + inp)]
+
 
     #selectedLevel = levels[selectedLevel]
 
     #For loop to print each list item in order for the user to see.
     for i in selectedLevel:
-        print(str(i+". ") + selectedLevel[i]))
+        print(str(i+". ") + selectedLevel[i])
 
     inp_ = 0    
 
@@ -49,7 +47,9 @@ def userInterface():
     width = inp_
 
 
-    #depth = int(input("Depth (0): ")) # remove text depth altogether? Not very comfortable with depth.
+    #depth = int(input("Depth (0): ")) # remove text depth altogether?
+    #Not very easy to keep track of word count with depth.
+    
     #print("In total, you will be typing " + str(width * depth) + "words.") <<<That is pretty bad.
 
 def counter():
@@ -72,6 +72,8 @@ def wpm(time, line):
     #better now thanks to LeSirH.
 
 def wordcheck(inp):
+    #No idea if this works correctly but it should.
+    #May not be a necessary function for the 100WPM+ gang however.
     prompts = prompt.split()
     inputs = inp.split()
     errorcount = 0
@@ -90,9 +92,12 @@ def wordcheck(inp):
     percentage = (((float(correct) / float(len(prompts))) - float(words_left) / float(len(prompts))) * 100)
     return percentage
 
-percentager = 0
-exit = False
+#Initialisation
 choice = 0
+percentager = 0
+
+initialPrompt = ""
+exit = False
 while exit == False:
     choice = checkinp("Menu selection:\nPress 1 - Setup & guide.\nPress 2 - Skip setup. (Use default settings)\nPress 3 - Exit.", lambda x: x.isdigit() and int(x) > 0 and int(x) < 4)
     if choice == 1:
@@ -103,8 +108,7 @@ while exit == False:
         #<Random word mode?>
     elif choice == 3:
         exit
-    i = 0
-    
+        
     for i in range(0,depth):
         initialPrompt = initialPrompt+"\n"+width*(str(selectedLevel[selectedIndex])+" ")
     prompt = initialPrompt
