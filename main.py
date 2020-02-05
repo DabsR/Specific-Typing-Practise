@@ -26,10 +26,8 @@ def SetupGuide(): #Initially function name was "UserInterface".
 
     #Level Selection
     inp_ = checkinp("Level Selection: Enter a number from 9 to 20:", lambda x: x.isdigit() and int(x) > 8 and int(x) < 21)
-    selectedLevel = levels[eval("levels.level_" + inp)]
+    selectedLevel = levels[eval("levels.level_" + inp_)]
 
-
-    #selectedLevel = levels[selectedLevel]
 
     #For loop to print each list item in order for the user to see.
     for i in selectedLevel:
