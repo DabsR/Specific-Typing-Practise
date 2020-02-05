@@ -1,5 +1,5 @@
-#Code partially tested. Two or three logic errors remain.
-
+#I know that the inp_ and _inp variables are quite unnecessary, but I just find it more comfortable this way.
+#Do what you want with them.
 from time import time
 import levels
 
@@ -22,40 +22,33 @@ def defaultValues():
     selectedLevel = levels.level_12
     width = 20
 
-def SetupGuide(): #Initially function name was "UserInterface".
-
+def userInterface():
     #Level Selection
     inp_ = checkinp("Level Selection: Enter a number from 9 to 20:", lambda x: x.isdigit() and int(x) > 8 and int(x) < 21)
     selectedLevel = levels[eval("levels.level_" + inp_)]
-
-
     #For loop to print each list item in order for the user to see.
     for i in selectedLevel:
         print(str(i+". ") + selectedLevel[i])
-
     inp_ = 0    
-
     #Word selection
     inp_ = checkinp("Word Selection: Enter a number from 0 to" + str(len(selectedLevel)), lambda x: x.isdigit() and int(x) > 0 and int(x) < len(selectedLevel))
     selectedIndex = inp_
-    #CHECK BOUNDARIES CAUSE I CAN'T THINK.
-    
+    #NEED TO TEST BOUNDARIES CAUSE I CAN'T THINK.
     #Amount of words to type
     inp_ = checkinp("Word amount selection: Enter any number that suits you.", lambda x: x.isdigit() and int(x) > 0)
     width = inp_
 
 
     #depth = int(input("Depth (0): ")) # remove text depth altogether?
-    #Not very easy to keep track of word count with depth.
+    #Not very easy to keep track of word count with depth included.
     
-    #print("In total, you will be typing " + str(width * depth) + "words.") <<<That is pretty bad.
-    
-    return #MAY NEED TO RETURN SOME VALUES. WILL BE BACK TO THIS.
+    #print("In total, you will be typing " + str(width * depth) + "words.") <<<That is pretty bad lol
+
 def counter():
     print(prompt)
     input(">>> Press ENTER to begin.")
     begin_time = time()
-    inp = input("\n")
+    _inp = input("\n")
     end_time = time()
     final_time = (end_time - begin_time) / 60
     return final_time, inp
@@ -67,7 +60,7 @@ def wpm(time, line):
     # word_length = len(words)
     # words_per_m = word_length / time
     return 
-    #The wpm calculation should be
+    #This wpm calculations should be
     #better now thanks to LeSirH.
 
 def wordcheck(inp):
@@ -102,12 +95,12 @@ while exit == False:
     if choice == 1:
         userInterface()
     elif choice == 2:
-        setupGuide()
+        defaultValues()
     #elif choice == 3:
         #<Random word mode?>
     elif choice == 3:
         exit
-        
+    #User will have the option to quickly restart the track they just practised. Will implement later.
     for i in range(0,depth):
         initialPrompt = initialPrompt+"\n"+width*(str(selectedLevel[selectedIndex])+" ")
     prompt = initialPrompt
