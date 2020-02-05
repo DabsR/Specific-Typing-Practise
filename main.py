@@ -1,3 +1,5 @@
+#CODE NOT TESTED FULLY YET. BUT IT DOESN'T SEEM TO HAVE MANY VISIBLE ERRORS.
+
 from time import time
 import levels
 initialPrompt = ""
